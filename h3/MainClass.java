@@ -20,16 +20,20 @@ public class MainClass{
 	int is = 0;
 	ArrayList<String> al = new ArrayList<String>();
 	for(String str : args){
-	is=0;
-	if(str.equals("down")){is=1;}
-	if(System.getProperty(str) != null){
-	al.add(str); } }	
-	Object arr[] = al.toArray();
-	if(is==1){
-	Arrays.sort(arr, Collections.reverseOrder());
-	}else{
-	Arrays.sort(arr);}
-	System.out.println(Arrays.toString(arr));
+	    is=0;
+	    if(str.equals("down")){
+            is=1;
+        }
+	    if(System.getProperty(str) != null) {
+	        al.add(System.getProperty(str));
+	    } 
+	        }	
+	    Object arr[] = al.toArray();
+	    if(is==1){
+	        Arrays.sort(arr, Collections.reverseOrder());
+	}else {
+	    Arrays.sort(arr);}
+	    System.out.println(Arrays.toString(arr));
 	}
 	
 
