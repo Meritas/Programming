@@ -29,21 +29,20 @@ public class AirPlane {
 				 }
 
 
-	public void seat_case(num){//num == rvalue/num of case
+	public void seat_fill(num){//num == rvalue/num of case
 			switch(num){
-				case 1:	seats[apc.c1_r][apc.c1_c] = 1;
-					seats[apc.c1_r][apc.c1_c+1] = 1;	
-					seats[apc.c1_r][apc.c1_c+2] = 1;
-					break;
-
-					case 2: seats[apc.c2_r][apc.c2_c] = 1;
-						seats[apc.c2_r][apc.c2_c+1] = 1;
-					break;
-
-					case 3: seats[apc.c3_r][apc.c3_c] = 1;
-					break
-					}
-			}	
+				case 1: for(i=0;i<=5;i+3){
+						if (seats[apc.c1_r][i]+seats[apc.c1_r][i+2]=0){
+							seats[apc.c1_r[i] = 1;
+							seats[apc.c1_r[i+1] = 1;
+							seats[apc.c1_r[i+2]
+							break;
+							} else {
+							continue;
+							}
+						}
+				case 2: if 
+				
 
 
 public class pointer(){
@@ -70,3 +69,27 @@ public static void main(String[] args) {
 
 		}
 	}
+
+
+
+// BEWARE THRASH/UNUSED CODE BELOW!
+
+	/*public void seat_case(num){//num == rvalue/num of case
+			switch(num){
+				case 1:	seats[apc.c1_r][apc.c1_c] = 1;
+					seats[apc.c1_r][apc.c1_c+1] = 1;	
+					seats[apc.c1_r][apc.c1_c+2] = 1;
+					if( apc.c_r
+					break;
+
+				case 2: seats[apc.c2_r][apc.c2_c] = 1;
+					seats[apc.c2_r][apc.c2_c+1] = 1;
+					break;
+
+				case 3: seats[apc.c3_r][apc.c3_c] = 1;
+					break
+				}
+			}	
+
+
+*/ 
