@@ -20,7 +20,26 @@ public class AirPlane {
 
 	public void flyingVehicle(){
 		int[][] seats = new int[6][27];
+		
+		public void add_seats(){
+			for(int i=0; sum<162; i++){
+				 int rvalue = new Random().nextInt(al_c) + 1;//al_c -> highest case allowed, every lower case than the current highest case is allowed by default)
+				 seat_case(rvalue);
+				 }
+
+		public void seat_case(num){//num == rvalue/num of case
+				 						
+	
 		}	
+
+	public class pointer(){
+		int c1_c = 0; //row 1 column
+		int c1_r = 0; //row 1 row
+		int c2_c = 0;
+		int c2_r = 0;
+		int c3_c = 0;
+		int c3_r = 0;
+		}
 	
 	
 	public static void main(String[] args) {
