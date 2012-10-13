@@ -16,8 +16,13 @@ public class AirPlane {
 		}
 
 	}
+	
 
-
+	public void flyingVehicle(){
+		int[][] seats = new int[6][27];
+		}	
+	
+	
 	public static void main(String[] args) {
 		AirPlane plane = new AirPlane();
 		plane.printSeats();
