@@ -30,18 +30,28 @@ public class AirPlane {
 
 
 	public void seat_fill(num){//num == rvalue/num of case
+			boolean iftrue = false;
 			switch(num){
 				case 1: for(i=0;i<=5;i+3){
 						if (seats[apc.c1_r][i]+seats[apc.c1_r][i+2]=0){
 							seats[apc.c1_r[i] = 1;
 							seats[apc.c1_r[i+1] = 1;
-							seats[apc.c1_r[i+2]
+							seats[apc.c1_r[i+2] = 1;
+							iftrue = true;
 							break;
 							} else {
 							continue;
 							}
 						}
-				case 2: if 
+						if (iftrue == false){
+							apc.c1_r = apc.c1_r + 1;
+							seats[apc.c1_r][0] = 1;		
+							seats[apc.c1_r][1] = 1;
+							seats[apc.c1_r][2] = 1;
+							} else {
+							apc.c1_r = apc.c1_r + 1;
+							}
+				case 2: for(
 				
 
 
