@@ -22,6 +22,7 @@ public class AirPlane2 {
 		public void add_seats(){
 			for(int i=0; sum<162; i++){
 				int rvalue = new Random().nextInt(Filler.al_c) + 1;//al_c -> highest case allowed, every lower case than the current highest case is allowed by default)
+				System.out.println(rvalue);
 				if(sum+rvalue > 162) continue;
 				sum = sum + rvalue;
 				Filler.case_system(rvalue);
@@ -29,8 +30,8 @@ public class AirPlane2 {
 
 		}
 public void print_seats(){		
-for (int r=0;r<=26;r++) {
 for(int c=0;c<=5;c++) {
+for (int r=0;r<=26;r++) {
 System.out.print(Filler.seats[c][r]+ " ");
 if (c==2)
 System.out.print(" ");
@@ -46,10 +47,10 @@ System.out.println(" ");
 
 		class fillingComputer{
 			int cRow = 0;
-			int al_c = 2;
+			int al_c = 3;
 			int num = 3;//num == rvalue/num of case
 			boolean iftrue = false;
-			int[][] seats = new int[6][27];
+			int[][] seats = new int[27][6];
 			
 			public void case_system(int num){
 				switch(num){
@@ -67,7 +68,6 @@ System.out.println(" ");
 
 			public void case1(){
 				for( int i=0;;){
-					System.out.println("lelele");
 					if (seats[cRow][i]+seats[cRow][i+2]==0){
 						seats[cRow][i] = 1;
 						seats[cRow][i+1] = 1;
@@ -82,8 +82,8 @@ System.out.println(" ");
 						}
 					}
 				if ( iftrue == false ){
-					if ( cRow == 27  ){
-						al_c = 2;
+					if ( cRow == 26  ){
+						al_c = 3;
 					} else {
 						cRow = cRow + 1;
 						seats[cRow][0] = 1;		
@@ -95,7 +95,7 @@ System.out.println(" ");
 				}
 
 			public void case2(){
-				for ( int i=0; i<=5; i=i+1 ){
+				for ( int i=0; i<5; i=i+1 ){
 					if(i==2) continue;
 					if(seats[cRow][i]+seats[cRow][i+1] == 0){
 						seats[cRow][i] = 1;
@@ -105,8 +105,8 @@ System.out.println(" ");
 				}
 				
 					if ( iftrue == false ){
-						if ( cRow == 27  ){
-						al_c = 1;
+						if ( cRow == 26  ){
+						al_c = 2;
 						} else {
 						cRow = cRow + 1;
 						seats[cRow][0] = 1;
@@ -124,7 +124,7 @@ System.out.println(" ");
 						}
 					}
 					if ( iftrue==false ){
-						if ( cRow == 27  ){
+						if ( cRow == 26  ){
 						al_c = 999;
 						} else {
 						cRow = cRow+1;
