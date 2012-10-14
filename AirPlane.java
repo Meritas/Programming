@@ -66,14 +66,17 @@ System.out.println(" ");
 			}
 
 			public void case1(){
-				for( int i=0; i<=5; i=i+3 ){
+				for( int i=0;;){
 					if (seats[cRow][i]+seats[cRow][i+2]==0){
 						seats[cRow][i] = 1;
 						seats[cRow][i+1] = 1;
 						seats[cRow][i+2] = 1;
 						iftrue = true;
 						break;
-						} else {
+						}
+						if( i==3 ) break;
+						else{
+						i = 3;
 						continue;
 						}
 					}
@@ -93,7 +96,7 @@ System.out.println(" ");
 			public void case2(){
 				for ( int i=0; i<=5; i=i+1 ){
 					if(i==2) continue;
-					if(seats[cRow][i]+seats[cRow][i+1] == 0){//4
+					if(seats[cRow][i]+seats[cRow][i+1] == 0){
 						seats[cRow][i] = 1;
 						seats[cRow][i+1] = 1;
 						iftrue = true;
@@ -103,12 +106,12 @@ System.out.println(" ");
 					if ( iftrue == false ){
 						if ( cRow == 27  ){
 						al_c = 1;
-						} else {//1
+						} else {
 						cRow = cRow + 1;
 						seats[cRow][0] = 1;
 						seats[cRow][1] = 1;
-						
-					
+						}
+					}
 				return;
 			}
 
