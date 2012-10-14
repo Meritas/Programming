@@ -158,14 +158,18 @@ System.out.println(" ");
 						return;
 						}
 					}
-						if ( cRow == 3  ){
-						al_c = 999;
-						} else {
-						cRow = cRow+1;
-						seats[cRow][0] = 1;
-					}
-				return;
 
+
+					for(;;){
+						cRow = cRow+1;
+						for( int i=0; i<=5; i++ ){
+							if ((seats[cRow][i]) == 0){
+							seats[cRow][i] = 1;
+							return;
+							}
+						}						
+						if ( cRow == 3  ) al_c = 999;
+					}
 			}
 		}
 
