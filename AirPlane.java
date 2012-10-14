@@ -1,42 +1,55 @@
 import java.util.*;
+import java.util.Arrays;
 
 public class AirPlane {
+
+public static void main(String[] args) {
+		AirPlane plane = new AirPlane();
+		}
+}
 	
-	public class flyingVehicle{
+		class flyingVehicle{
 		int sum = 0;
-		int[][] seats = new int[27][6];
+		int[][] planeSeats = new int[27][6];
 		fillingComputer Filler = new fillingComputer();
 		public void add_seats(){
 			for(int i=0; sum<162; i++){
 				int rvalue = new Random().nextInt(Filler.al_c) + 1;//al_c -> highest case allowed, every lower case than the current highest case is allowed by default)
-				seat_case(rvalue);
+				if(sum+rvalue > 162) continue;
+				sum = sum + rvalue;
+				Filler.case_system(rvalue);
 			}
+
 		}
+		planeSeats = Filler.seats;
 	}
 
 
-	public class fillingRobot{
+		class fillingComputer{
 			int cRow = 0;
 			int al_c;
 			int num = 3;//num == rvalue/num of case
 			boolean iftrue = false;
+			int[][] seats = new int[ ][6];
 			
-			case_system(int num){
+			public void case_system(int num){
 				switch(num){
-					case 1: case1(0);
+					case 1: case1();
 					break;
-					case 2: case2(0);
+					case 2: case2();
 					break;
-					case 3: case3(0);
+					case 3: case3();
 					break;
 					case 999: System.out.println("No more free seats.");
 					break;
 				}
+			return;
+				
 			}
 
-			case1(){
+			public void case1(){
 				for( int i=0; i<=5; i=i+3 ){
-					if (seats[cRow][i]+seats[cRow][i+2]=0){
+					if (seats[cRow][i]+seats[cRow][i+2]==0){
 						seats[cRow][i] = 1;
 						seats[cRow][i+1] = 1;
 						seats[cRow][i+2] = 1;
@@ -55,30 +68,36 @@ public class AirPlane {
 						seats[cRow][1] = 1;
 						seats[cRow][2] = 1;
 						}
+					}
+						return;
 				}
 
-			case2(){
-				for ( int i=0; i<=5; i=i+1 ){
+			public void case2(){//6
+				for ( int i=0; i<=5; i=i+1 ){//5
 					if(i==2) continue;
-					if(seats[cRow][i]+seats[cRow][i+1] == 0){
+					if(seats[cRow][i]+seats[cRow][i+1] == 0){//4
 						seats[cRow][i] = 1;
 						seats[cRow][i+1] = 1;
 						iftrue = true;
-						}
-					if ( iftrue == false ){
-						if ( cRow == 27  ){
+						}//4
+				}//5
+				
+					if ( iftrue == false ){//3
+						if ( cRow == 27  ){//2
 						al_c = 1;
-						} else {
+					/*//2*/	} else {//1
 						cRow = cRow + 1;
 						seats[cRow][0] = 1;
 						seats[cRow][1] = 1;
-						}
-			}
+						}//1
+					}//3
+				return;
+			}//6
 
-			case3(){
+			public void case3(){
 				for( int i=0; i<=5; i=i+1 ){
 					if ((seats[cRow][i]) == 0){
-						seats[cRow][i] = 1)
+						seats[cRow][i] = 1;
 						iftrue = true;
 						}
 					}
@@ -89,6 +108,8 @@ public class AirPlane {
 						cRow = cRow+1;
 						seats[cRow][0] = 1;
 						}
+					}
+				return;
 
 			}
 		}
@@ -96,14 +117,11 @@ public class AirPlane {
 				
 
 	
-public static void main(String[] args) {
-		AirPlane plane = new AirPlane();
-		}
 
 
 
 
-}
+
 
 
 // BEWARE THRASH/UNUSED CODE BELOW!
@@ -127,3 +145,41 @@ public static void main(String[] args) {
 
 
 */ 
+
+
+
+/* Advanced mode
+
+int [] paths = new int[num]; //puteki, na vsqka puteka ima n-broy mesta
+
+
+
+
+for( int row = current_row; boolean found_spots == true; row = row + 1; ){
+
+for (i=0; i<=paths; i = i + 1){
+	found_spots = false;
+	tkn_seats = 0;	//kolko mesta sa zaeti na reda, koito preglejdame
+	point = 0;      //pokazalec do koq sedalka sme stignali
+	if ( paths[i] < ppl ){
+		point = point + paths[i];		
+		continue;
+		}
+
+	for ( k=0; k <= paths[i]; k = k + 1){
+		if( seats[row][point] == 1 ) tkn_seats = tkn_seats + 1;
+		point = point + 1;
+		}
+
+	if ( paths[i] - tkn_seats < ppl ){
+		point = point + (paths[i] - tkn_seats);
+		continue;
+		}
+
+	for ( k2 = 0; k <= ppl; k = k + 1 ){
+		seats[row][point] = 1;
+		point = point + 1;
+		found_spots = true;
+		}
+
+}
