@@ -20,7 +20,7 @@ public class AirPlane3 {
 		int sum = 0;
 		fillingComputer Filler = new fillingComputer();
 		public void add_seats(){
-			for(int i=0; sum<162; i++){
+			for(int i=0; sum<24; i++){
 				if( Filler.al_c == 999 ){
 					System.out.println("No more free seats.");
 					break;
