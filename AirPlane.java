@@ -1,80 +1,94 @@
 import java.util.*;
 
 public class AirPlane {
-
-
-	/*public void printSeats() {
-		int[][] seats = new int[6][27];
-		for (int r=0;r<=26;r++) {
-			for(int c=0;c<=5;c++) {
-				System.out.print(seats[c][r]+ " ");
-				if (c==2){
-					System.out.print(" ");
-					}
-				}
-		System.out.println(" ");
-		}
-
-	} Neshto me drazni ta she go ocvetq v sinio da go ignore-vam po-lesno*/
 	
-
 	public void flyingVehicle(){
 		int[][] seats = new int[27][6];
-		pointer apc; //AirPlanePointer
-		
+		fillingRobot Filler = new fiillingRobot;
 		public void add_seats(){
-			for(int i=0; sum<162; i++){
-				 int rvalue = new Random().nextInt(al_c) + 1;//al_c -> highest case allowed, every lower case than the current highest case is allowed by default)
-				 seat_case(rvalue);
+			for(int i=0; int sum<162; i++){
+				int rvalue = new Random().nextInt(Filler.al_c) + 1;//al_c -> highest case allowed, every lower case than the current highest case is allowed by default)
+				seat_case(rvalue);
+				
 				 }
 
 
-	public void seat_fill(num){//num == rvalue/num of case
+	public void fillingRobot(num){//num == rvalue/num of case
+			int cRow = 0;
+			int al_c; 
 			boolean iftrue = false;
+			
 			switch(num){
-				case 1: for(i=0; i<=5; i=i+3){
-							if (seats[apc.c1_r][i]+seats[apc.c1_r][i+2]=0){
-								seats[apc.c1_r[i] = 1;
-								seats[apc.c1_r[i+1] = 1;
-								seats[apc.c1_r[i+2] = 1;
-								iftrue = true;
-								break;
-								} else {
-								continue;
-								}
-							}
-							if (iftrue == false){
-								apc.c1_r = apc.c1_r + 1;
-								seats[apc.c1_r][0] = 1;		
-								seats[apc.c1_r][1] = 1;
-								seats[apc.c1_r][2] = 1;
-								} else {
-								apc.c1_r = apc.c1_r + 1;
-								}
-					case 2: for(i=0; i<=5; i=i+1){
-								if(i==2) continue;
-								if(seats[apc.c1_r][i]+seats[apc.c1_r][i+1] == 0){
-								seats[apc.c1_r][i] = 1;
-								seats[apc.c1_r][i+1] = 1;
-								iftrue = true;
-								}
-							if (iftrue == false){
-								apc.c1_r = apc.c1_r + 1;
-								seats[apc.c1_r][0] = 1;
-								seats[apc.c1_r][1] = 1;	
-							
+				case 1: case1(0);
+						break;
+				case 2: case2(0);
+						break;
+				case 3: case3(0);
+						break;
+				case 999: System.out.println("No more free seats.");
+						break;
+			}
+
+			case1(int i){
+				for( i=0; i<=5; i=i+3 ){
+					if (seats[cRow][i]+seats[cRow][i+2]=0){
+						seats[cRow[i] = 1;
+						seats[cRow[i+1] = 1;
+						seats[cRow[i+2] = 1;
+						iftrue = true;
+						break;
+						} else {
+						continue;
+						}
+					}
+					if ( iftrue == false ){
+						if ( cRow == 5  ){
+						al_c = 2;
+						} else {
+						cRow = cRow + 1;
+						seats[cRow][0] = 1;		
+						seats[cRow][1] = 1;
+						seats[cRow][2] = 1;
+						}
+				}
+
+			case2(int i){
+				for ( i=0; i<=5; i=i+1 ){
+					if(i==2) continue;
+					if(seats[cRow][i]+seats[cRow][i+1] == 0){
+						seats[cRow][i] = 1;
+						seats[cRow][i+1] = 1;
+						iftrue = true;
+						}
+					if ( iftrue == false ){
+						if ( cRow == 5  ){
+						al_c = 1;
+						} else {
+						cRow = cRow + 1;
+						seats[cRow][0] = 1;
+						seats[cRow][1] = 1;
+						}
+			}
+
+			case3(int i){
+				for( i=0; i<=5; i=i+1 ){
+					if (seats[cRow][i] == 0){
+						seats[cRow][i] == 1)
+						iftrue = true;
+						}
+					}
+					if ( iftrue==false ){
+						if ( cRow == 5  ){
+						al_c = 999;
+						} else {
+						cRow = cRow+1;
+						seats[cRow][0] = 1;
+					}
+
+			}
+		
 				
 
-
-public class pointer(){
-		int c1_r = 0; //row 1 row
-		int c1_c = 0; //row 1 column
-		int c2_r = 0;
-		int c2_c = 0;
-		int c3_r = 0;
-		int c3_c = 0;
-		}
-	
 	
 public static void main(String[] args) {
 		AirPlane plane = new AirPlane();
@@ -97,9 +111,9 @@ public static void main(String[] args) {
 
 	/*public void seat_case(num){//num == rvalue/num of case
 			switch(num){
-				case 1:	seats[apc.c1_r][apc.c1_c] = 1;
-					seats[apc.c1_r][apc.c1_c+1] = 1;	
-					seats[apc.c1_r][apc.c1_c+2] = 1;
+				case 1:	seats[cRow][apc.c1_c] = 1;
+					seats[cRow][apc.c1_c+1] = 1;	
+					seats[cRow][apc.c1_c+2] = 1;
 					if( apc.c_r
 					break;
 
