@@ -34,9 +34,9 @@ for(int c=0;c<=5;c++) {
 for (int r=0;r<=26;r++) {
 System.out.print(Filler.seats[c][r]+ " ");
 if (c==2)
-System.out.print(" ");
-}
 System.out.println(" ");
+}
+System.out.print(" ");
 }
 }
 
@@ -53,7 +53,8 @@ System.out.println(" ");
 			int[][] seats = new int[27][6];
 			
 			public void case_system(int num){
-				switch(num){
+				
+				switch(al_c){
 					case 1: case1();
 					break;
 					case 2: case2();
@@ -85,7 +86,7 @@ System.out.println(" ");
 					if ( cRow == 26  ){
 						al_c = 3;
 					} else {
-						cRow = cRow + 1;
+						cRow++;
 						seats[cRow][0] = 1;		
 						seats[cRow][1] = 1;
 						seats[cRow][2] = 1;
@@ -95,7 +96,7 @@ System.out.println(" ");
 				}
 
 			public void case2(){
-				for ( int i=0; i<5; i=i+1 ){
+				for ( int i=0; i<5; i++ ){
 					if(i==2) continue;
 					if(seats[cRow][i]+seats[cRow][i+1] == 0){
 						seats[cRow][i] = 1;
