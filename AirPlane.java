@@ -3,14 +3,21 @@ import java.util.Arrays;
 
 public class AirPlane {
 
-public static void main(String[] args) {
-		AirPlane plane = new AirPlane();
-		}
+	public static void main(String[] args) {
+		flyingVehicle plane = new flyingVehicle();
+		plane.add_seats();
+		plane.print_seats();		
+	}
 }
+
+
+
+
+
+
 	
 		class flyingVehicle{
 		int sum = 0;
-		int[][] planeSeats = new int[27][6];
 		fillingComputer Filler = new fillingComputer();
 		public void add_seats(){
 			for(int i=0; sum<162; i++){
@@ -21,16 +28,28 @@ public static void main(String[] args) {
 			}
 
 		}
-		planeSeats = Filler.seats;
+public void print_seats(){		
+for (int r=0;r<=26;r++) {
+for(int c=0;c<=5;c++) {
+System.out.print(Filler.seats[c][r]+ " ");
+if (c==2)
+System.out.print(" ");
+}
+System.out.println(" ");
+}
+}
+
+
+
 	}
 
 
 		class fillingComputer{
 			int cRow = 0;
-			int al_c;
+			int al_c = 2;
 			int num = 3;//num == rvalue/num of case
 			boolean iftrue = false;
-			int[][] seats = new int[ ][6];
+			int[][] seats = new int[27][6];
 			
 			public void case_system(int num){
 				switch(num){
@@ -44,7 +63,6 @@ public static void main(String[] args) {
 					break;
 				}
 			return;
-				
 			}
 
 			public void case1(){
@@ -72,27 +90,27 @@ public static void main(String[] args) {
 						return;
 				}
 
-			public void case2(){//6
-				for ( int i=0; i<=5; i=i+1 ){//5
+			public void case2(){
+				for ( int i=0; i<=5; i=i+1 ){
 					if(i==2) continue;
 					if(seats[cRow][i]+seats[cRow][i+1] == 0){//4
 						seats[cRow][i] = 1;
 						seats[cRow][i+1] = 1;
 						iftrue = true;
-						}//4
-				}//5
+						}
+				}
 				
-					if ( iftrue == false ){//3
-						if ( cRow == 27  ){//2
+					if ( iftrue == false ){
+						if ( cRow == 27  ){
 						al_c = 1;
-					/*//2*/	} else {//1
+						} else {//1
 						cRow = cRow + 1;
 						seats[cRow][0] = 1;
 						seats[cRow][1] = 1;
-						}//1
-					}//3
+						
+					
 				return;
-			}//6
+			}
 
 			public void case3(){
 				for( int i=0; i<=5; i=i+1 ){
@@ -113,7 +131,7 @@ public static void main(String[] args) {
 
 			}
 		}
-		
+
 				
 
 	
@@ -182,4 +200,4 @@ for (i=0; i<=paths; i = i + 1){
 		found_spots = true;
 		}
 
-}
+}*/
