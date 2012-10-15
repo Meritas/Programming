@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.Arrays;
 
-public class AirPlane3 {
+public class AirPlane {
 
 	public static void main(String[] args) {
 		flyingVehicle plane = new flyingVehicle();
@@ -20,23 +20,25 @@ public class AirPlane3 {
 		int sum = 0;
 		fillingComputer Filler = new fillingComputer();
 		public void add_seats(){
-			for(int i=0; sum<24; i++){
+			while(sum<162){
+				int al_c2 = Filler.al_c;
+				int rvalue = new Random().nextInt(Filler.al_c) + 1;//al_c -> highest case allowed, every lower case than the current highest case is allowed by default)
+				if(sum+rvalue > 162) continue;
 				if( Filler.al_c == 999 ){
 					System.out.println("No more free seats.");
 					break;
-				}
-				int rvalue = new Random().nextInt(Filler.al_c) + 1;//al_c -> highest case allowed, every lower case than the current highest case is allowed by default)
-				if(sum+rvalue > 24) continue;
+				}				
 				System.out.println(rvalue);
 				sum = sum + rvalue;
 				Filler.case_system(rvalue);
+				if ( Filler.al_c != al_c2 ) sum = sum - rvalue;
 				print_seats();
 			}
 
 		}
 public void print_seats(){	
 System.out.println(" ");	
-for(int c=0;c<=3;c++) {
+for(int c=0;c<=26;c++) {
 for (int r=0;r<=5;r++) {
 System.out.print(Filler.seats[c][r]+ " ");
 if (r==2)
@@ -55,7 +57,7 @@ System.out.println(" ");
 			int cRow = 0;
 			int al_c = 3;
 			boolean iftrue;
-			int[][] seats = new int[4][6];
+			int[][] seats = new int[27][6];
 			
 			public void case_system(int num){
 				
@@ -110,11 +112,9 @@ System.out.println(" ");
 							}//3
 						}//4
 					}//5
+					
 		
-					if ( cRow == 3  ){
-						al_c = 2;
-						return;
-					}
+					
 				}
 	
 
@@ -144,7 +144,7 @@ System.out.println(" ");
 								return;
 								}
 							}
-						if ( cRow == 3  ){
+						if ( cRow == 26  ){
 						al_c = 1;
 						return;
 						}
@@ -152,6 +152,21 @@ System.out.println(" ");
 			}
 
 			public void case3(){
+
+				/*for( int i3 = 0; i3<=3; i3++){
+					for(int k3 = 0; k3<=5; k3++){
+						if( seats[i3][k3] == 0 ){
+							seats[i3][k3]=1;
+							return;
+						}
+					}
+				cRow++;
+				}
+				al_c = 999;
+				return;
+			}
+		}*/
+
 				for( int i=0; i<=5; i=i+1 ){
 					if ((seats[cRow][i]) == 0){
 						seats[cRow][i] = 1;
@@ -161,14 +176,14 @@ System.out.println(" ");
 
 
 					for(;;){
-						cRow = cRow+1;
+						cRow++;
 						for( int i=0; i<=5; i++ ){
 							if ((seats[cRow][i]) == 0){
 							seats[cRow][i] = 1;
 							return;
 							}
 						}						
-						if ( cRow == 3  ) al_c = 999;
+						if ( cRow == 26  ) {al_c = 999; return;}
 					}
 			}
 		}
