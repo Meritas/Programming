@@ -6,7 +6,7 @@ public class AirPlane {
 	public static void main(String[] args) {
 		flyingVehicle plane = new flyingVehicle();
 		plane.add_seats();
-		plane.print_seats();		
+		
 	}
 }
 
@@ -20,33 +20,35 @@ public class AirPlane {
 		int sum = 0;
 		fillingComputer Filler = new fillingComputer();
 		public void add_seats(){
-			while(sum<24){
+			while(sum<162){
 				int al_c2 = Filler.al_c;
 				int rvalue = new Random().nextInt(Filler.al_c) + 1;//al_c -> highest case allowed, every lower case than the current highest case is allowed by default)
-				if(sum+rvalue > 24) continue;
+				if(sum+rvalue > 162) continue;
 				if( Filler.al_c == 999 ){
 					System.out.println("No more free seats.");
 					break;
 				}				
-				System.out.println(rvalue);
 				sum = sum + rvalue;
 				Filler.case_system(rvalue);
 				if ( Filler.al_c != al_c2 ) sum = sum - rvalue;
+				System.out.println(" ");
+				System.out.println( rvalue + " passenger(s) enter the airplane." );
 				print_seats();
 			}
 
 		}
-public void print_seats(){	
-System.out.println(" ");	
-for(int c=0;c<=3;c++) {
-for (int r=0;r<=5;r++) {
-System.out.print(Filler.seats[c][r]+ " ");
-if (r==2)
-System.out.print(" ");
-}
-System.out.println(" ");
-}
-}
+
+
+		public void print_seats(){	
+			System.out.println(" ");	
+			for(int c=0;c<=26;c++) {
+				for (int r=0;r<=5;r++) {
+					System.out.print(Filler.seats[c][r]+ " ");
+					if (r==2) System.out.print(" ");
+					}
+				System.out.println(" ");
+				}
+			}
 
 
 
@@ -56,8 +58,7 @@ System.out.println(" ");
 		class fillingComputer{
 			int cRow = 0;
 			int al_c = 3;
-			boolean iftrue;
-			int[][] seats = new int[4][6];
+			int[][] seats = new int[27][6];
 			
 			public void case_system(int num){
 				
@@ -89,29 +90,29 @@ System.out.println(" ");
 					
 
 
-					for(int i2=cRow+1; i2<=4; i2++){//5
+					for(int i2=cRow+1; i2<=27; i2++){
 
-						if(i2==4){//2
+						if(i2==27){
 							al_c=2;
 							return;
-						}//2
+						}
 
-						for( int k2=0;;){//4
+						for( int k2=0;;){
 
-						if(seats[i2][k2]+seats[i2][k2+2]==0){//1
+						if(seats[i2][k2]+seats[i2][k2+2]==0){
 							seats[i2][k2] = 1;
 							seats[i2][k2+1] = 1;
 							seats[i2][k2+2] = 1;
 							return;
-						}//1
+						}
 
 							if( k2==3 ) break;
-							else{//3
+							else{
 							k2 = 3;
 							continue;
-							}//3
-						}//4
-					}//5
+							}
+						}
+					}
 					
 		
 					
@@ -131,8 +132,8 @@ System.out.println(" ");
 						}
 				}
 						
-						for(int i2=cRow+1; i2<=4; i2++){
-							if (i2==4){
+						for(int i2=cRow+1; i2<=27; i2++){
+							if (i2==27){
 							al_c=1;
 							return;
 							}
@@ -144,7 +145,7 @@ System.out.println(" ");
 								return;
 								}
 							}
-						if ( cRow == 3  ){
+						if ( cRow == 26  ){
 						al_c = 1;
 						return;
 						}
@@ -152,21 +153,6 @@ System.out.println(" ");
 			}
 
 			public void case3(){
-
-				/*for( int i3 = 0; i3<=3; i3++){
-					for(int k3 = 0; k3<=5; k3++){
-						if( seats[i3][k3] == 0 ){
-							seats[i3][k3]=1;
-							return;
-						}
-					}
-				cRow++;
-				}
-				al_c = 999;
-				return;
-			}
-		}*/
-
 				for( int i=0; i<=5; i=i+1 ){
 					if ((seats[cRow][i]) == 0){
 						seats[cRow][i] = 1;
@@ -183,7 +169,7 @@ System.out.println(" ");
 							return;
 							}
 						}						
-						if ( cRow == 3  ) {al_c = 999; return;}
+						if ( cRow == 26  ) {al_c = 999; return;}
 					}
 			}
 		}
@@ -216,6 +202,24 @@ System.out.println(" ");
 					break
 				}
 			}	
+-//////////////////////////////////////////////////////////////////////////////////////////////////-
+
+				for( int i3 = 0; i3<=3; i3++){
+					for(int k3 = 0; k3<=5; k3++){
+						if( seats[i3][k3] == 0 ){
+							seats[i3][k3]=1;
+							return;
+						}
+					}
+				cRow++;
+				}
+				al_c = 999;
+				return;
+			}
+		
+
+
+-////////////////////////////////////////////////////////////////////////////////////////////////////-
 
 
 */ 
