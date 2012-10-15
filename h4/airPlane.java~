@@ -1,0 +1,6 @@
+
+
+
+class flyingVehicle
+	@@seats = Array.
+	
