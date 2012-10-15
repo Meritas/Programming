@@ -230,7 +230,7 @@ public class AirPlane {
 
 int [] paths = new int[num]; //puteki, na vsqka puteka ima n-broy mesta
 
-
+//commit-needed change-comment
 
 
 for( int row = current_row; boolean found_spots == true; row = row + 1; ){
