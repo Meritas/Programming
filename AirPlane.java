@@ -50,7 +50,7 @@ public class AirPlane {
 
 
 		class fillingComputer{
-			int mRow = 0; //The minimum row at which our checks are gonna start. Only records with size 1 can 
+			int mRow = 0; //The minimum row at which our checks are gonna start. Only groups of size 1 are allowed to iterrate this variable, so we don't end up dealing with holes in the final seats-layout; or in more detail |1| is the only number that is hole-free guaranteed, because it will definitely check every single seat on it's search for free seat and if 1's check results in none free seats on this row we can safely increase the minimum starting row - |mRow|. ! REMEMBER, THIS ROW-INCREASE ISN'T A-MUST FOR SUCH A PROGRAM TO RUN PROPERLY BUT IT SAVES A LOT OF TIME, ESPECIALLY ON SLOWER SYSTEMS OR/AND LARGER ARRAYS GIVEN !
 			int MAX_ROW = 26; //Number of rows we are allowed to check/fill
 			int[] sLines = new int[2]; //This array contains the size of each seat-line; in other words sLines[n-1] == 3 means that line (n-1) has 3 seats
 			int gSize = 3; //Max size of groups allowed to enter the plane
