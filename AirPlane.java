@@ -12,28 +12,22 @@ public class AirPlane {
 
 
 
-
-
-
 	
 		class flyingVehicle{
 		int sum = 0;
 		fillingComputer Filler = new fillingComputer();
 		public void add_seats(){
 			while(sum<162){
-				int al_c2 = Filler.al_c;
-				int rvalue = new Random().nextInt(Filler.al_c) + 1;//al_c -> highest case allowed, every lower case than the current highest case is allowed by default)
-				if(sum+rvalue > 162) continue;
-				if( Filler.al_c == 999 ){
-					System.out.println("No more free seats.");
-					break;
-				}				
+				int gSize2 = Filler.gSize;
+				int rvalue = new Random().nextInt(Filler.gSize) + 1;//gSize -> number of people groups allowed to get in, every value lower than num than is allowed by default)
+				if(sum+rvalue > 162) continue;//so we can't add more people than max number of seats				
 				sum = sum + rvalue;
-				Filler.case_system(rvalue);
-				if ( Filler.al_c != al_c2 ) sum = sum - rvalue;
+				Filler.iCase(rvalue); //Equals group as the argument for iCase()
+				if ( Filler.gSize != gSize2 ) sum = sum - rvalue; //Checks-in if group of people happened to be kicked out of the plane. Point is that if we don't substract the number of the people in that group, we'd get inaccurate result for |sum|.
 				System.out.println(" ");
 				System.out.println( rvalue + " passenger(s) enters the airplane." );
 				print_seats();
+				System.out.println(sum); //prints number of seats that are already taken
 			}
 
 		}
@@ -52,124 +46,56 @@ public class AirPlane {
 
 
 
-	}
+		}
 
 
 		class fillingComputer{
-			int cRow = 0;
-			int al_c = 3;
+			int mRow = 0; //The minimum row at which our checks are gonna start. Only records with size 1 can 
+			int MAX_ROW = 26; //Number of rows we are allowed to check/fill
+			int[] sLines = new int[2]; //This array contains the size of each seat-line; in other words sLines[n-1] == 3 means that line (n-1) has 3 seats
+			int gSize = 3; //Max size of groups allowed to enter the plane
 			int[][] seats = new int[27][6];
 			
-			public void case_system(int num){
-				
-				switch(num){
-					case 3: case1();
-					break;
-					case 2: case2();
-					break;
-					case 1: case3();
-					break;
-				}
-			return;
-			}
-
-			public void case1(){
-				for( int i=0;;){
-					if (seats[cRow][i]+seats[cRow][i+2]==0){
-						seats[cRow][i] = 1;
-						seats[cRow][i+1] = 1;
-						seats[cRow][i+2] = 1;
-						return;
-						}
-						if( i==3 ) break;
-						else{
-						i = 3;
-						continue;
-						}
+			
+			public void iCase(int group){
+				sLines[0]=3;//Number of seats at n-line
+				sLines[1]=3;//--||--				
+				for( int mRow_T = mRow; mRow_T <= MAX_ROW; mRow_T++ ){
+					if ( (group == 1) && ( mRow_T != mRow) ){
+						mRow++;
 					}
-					
-
-
-					for(int i2=cRow+1; i2<=27; i2++){
-
-						if(i2==27){
-							al_c=2;
-							return;
-						}
-
-						for( int k2=0;;){
-
-						if(seats[i2][k2]+seats[i2][k2+2]==0){
-							seats[i2][k2] = 1;
-							seats[i2][k2+1] = 1;
-							seats[i2][k2+2] = 1;
-							return;
-						}
-
-							if( k2==3 ) break;
-							else{
-							k2 = 3;
+					int pointer = 0-sLines[0];
+					for( int i = 0; i <= sLines.length-1 ; i++ ){
+						pointer += sLines[i];
+						if ( group > sLines[i] ){
+							pointer += sLines[i];	
 							continue;
 							}
-						}
-					}
-					
-		
-					
-				}
-	
-
-			public void case2(){
-
-
-
-				for ( int i=0; i<5; i++ ){
-					if(i==2) continue;
-					if(seats[cRow][i]+seats[cRow][i+1] == 0){
-						seats[cRow][i] = 1;
-						seats[cRow][i+1] = 1;
-						return;
-						}
-				}
-						
-						for(int i2=cRow+1; i2<=27; i2++){
-							if (i2==27){
-							al_c=1;
-							return;
-							}
-						for ( int k2=0; k2<5;k2++ ){
-							if(k2==2) continue;
-							if(seats[i2][k2]+seats[i2][k2+1] == 0){
-								seats[i2][k2] = 1;
-								seats[i2][k2+1] = 1;
-								return;
+						int res = seatsTaken(pointer, i, mRow_T); //result for how many seats are taken
+						if ( group > sLines[i] - res ){
+							continue;
+						} else {
+							int pRes = pointer+res; //pointer+result --> Position Result! The first seat we add someone at; everything from here on is a piece of cake.
+							for( int i3 = pRes; i3 <= pRes + (group - 1); i3++ ){
+								seats[mRow_T][i3] = 1;
 								}
-							}
-						if ( cRow == 26  ){
-						al_c = 1;
-						return;
-						}
-					}
-			}
-
-			public void case3(){
-				for( int i=0; i<=5; i=i+1 ){
-					if ((seats[cRow][i]) == 0){
-						seats[cRow][i] = 1;
-						return;
-						}
-					}
-
-
-					for(;;){
-						cRow++;
-						for( int i=0; i<=5; i++ ){
-							if ((seats[cRow][i]) == 0){
-							seats[cRow][i] = 1;
 							return;
 							}
-						}						
-						if ( cRow == 26  ) {al_c = 999; return;}
+						}
 					}
+				gSize=group-1; //Ako izobshto se stigne do tozi red, znachi grupata hora s tazi golemina posmurtno nqmat shans da vlqzat i im zabranqvame izobshto da si pomislqt dori da probvat(kakto i na po-golemi grupi estestveno/pestim vreme ot nenujni izchisleniq
+				return;
+				}
+
+
+			public int seatsTaken(int ptr, int arg1, int row){
+				int counter = 0;//Counts how many seats are taken
+				for ( int i2 = ptr; i2 <= ptr + sLines[arg1]-1; i2++){
+									
+					if( seats[row][i2] == 1 ){//If seat is taken...
+						counter++;//Do I really need to explain this part?
+						}
+					}
+					return counter;// rezultata, koyto vrushta otgovarq na tochnata poziciq ot koqto ni e nujno da zapochnem, ako namerim dostatuchno prazni mesta
+				}
 			}
-		}	
