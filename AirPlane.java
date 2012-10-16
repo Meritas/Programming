@@ -90,8 +90,7 @@ public class AirPlane {
 
 			public int seatsTaken(int ptr, int arg1, int row){
 				int counter = 0;//Counts how many seats are taken
-				for ( int i2 = ptr; i2 <= ptr + sLines[arg1]-1; i2++){
-									
+				for ( int i2 = ptr; i2 <= ptr + sLines[arg1]-1; i2++){			
 					if( seats[row][i2] == 1 ){//If seat is taken...
 						counter++;//Do I really need to explain this part?
 						}
