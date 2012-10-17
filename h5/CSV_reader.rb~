@@ -21,11 +21,11 @@ for k in 0..i
 	print (k+1).to_s + ": " + number[k].to_s + "\n"
 	if max < number[k]
 		max = number[k]
-		number_one = k
+		number_one = k+1
 		end
 	if min > number[k]
 		min = number[k]
-		number_1000 = k
+		number_1000 = k+1
 	end
 end
 
